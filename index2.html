@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANŌ — Pure Mango, Bottled Luxury</title>
+    <meta name="description"
+        content="MANŌ Premium Mango Juice. Hand-picked, cold-pressed, and bottled to perfection. Experience the world's finest mango in every sip.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style2.css">
+    <link rel="icon" type="image/png" href="icon.png" sizes="192x192">
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1/bundled/lenis.min.js"></script>
+</head>
+
+<body>
+    <!-- AMBIENT AUDIO -->
+    <audio id="ambient-audio" src="extracted_assets/audio.mp3" preload="auto"></audio>
+    <button id="audio-toggle" class="audio-toggle" aria-label="Toggle Audio">
+        <span class="audio-toggle-icon">
+            <svg class="icon-playing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+            </svg>
+            <svg class="icon-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" />
+            </svg>
+        </span>
+    </button>
+
+    <!-- TRANSITION BLOCKS -->
+    <div class="transitionContainer">
+        <div class="transition-row row-1">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+        <div class="transition-row row-2">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+            <a href="#" class="nav-logo">MANŌ</a>
+        </div>
+        <div class="navbar-right">
+            <button class="nav-toggle-btn" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar-1"></span>
+                <span class="bar-2"></span>
+                <span class="bar-3"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FULL SCREEN MENU OVERLAY -->
+    <div class="menu" id="nav-overlay">
+        <div class="menu-bg">
+            <div class="menu-bg-left"><div class="menu-bg-left-inner"></div></div>
+            <div class="menu-bg-right"><div class="menu-bg-right-inner"></div></div>
+        </div>
+
+        <div class="menu-items">
+            <!-- Left Half -->
+            <div class="menu-col-left">
+                <div class="footer-brand">
+                    <span class="footer-logo">
+                        <span class="hero-hover-wrap">
+                            <span>MANO</span>
+                            <span>MANO</span>
+                        </span>
+                    </span>
+                    <p class="brand-subtext">Pure mango. Nothing more.<br>Nothing less. Always.</p>
+                </div>
+            </div>
+
+            <!-- Right Half -->
+            <div class="menu-col-right">
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h5>Company</h5>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Farms</a></li>
+                            <li><a href="#">Sustainability</a></li>
+                            <li><a href="#">Press</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Shop</h5>
+                        <ul>
+                            <li><a href="#">Single Bottles</a></li>
+                            <li><a href="#">Gift Packs</a></li>
+                            <li><a href="#">Subscribe</a></li>
+                            <li><a href="#">Wholesale</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Help</h5>
+                        <ul>
+                            <li><a href="#">Shipping Info</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================== PRELOADER =================== -->
+    <div id="preloader">
+        <div class="loader-inner">
+            <div class="loader-logo">MANŌ</div>
+            <p class="loader-tagline">Loading perfection…</p>
+            <div class="loader-bar-wrap">
+                <div class="loader-bar" id="progress-bar"></div>
+            </div>
+            <span class="loader-pct" id="progress-text">0%</span>
+        </div>
+    </div>
+
+    <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+        <defs>
+            <mask id="hero-mask" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox"></mask>
+        </defs>
+    </svg>
+
+    <!-- WRAPPER for overlapping and pinning -->
+    <div id="hero-quote-wrapper" class="stack-section">
+        <section class="hero-section" id="hero">
+            <div class="canvas-container" id="canvas-container">
+                <div class="hero-overlay" id="hero-overlay">
+                    <div class="hero-text-wrap">
+                        <h1 class="hero-title" id="hero-title">
+                            <div class="hero-title-line line" id="title-line-1">
+                                <span class="word">
+                                    <span class="hero-hover-wrap">
+                                        <span>Pure</span>
+                                        <span>Pure</span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="hero-title-line hero-title-line--accented line" id="title-line-2">
+                                <span class="word">
+                                    <em>
+                                        <span class="hero-hover-wrap" style="padding-right: 0.2em;">
+                                            <span>Gold.</span>
+                                            <span>Gold.</span>
+                                        </span>
+                                    </em>
+                                </span>
+                            </div>
+                            <div class="hero-title-line hero-title-line--sub line" id="title-line-3">
+                                <span class="word">
+                                    <span class="hero-hover-wrap">
+                                        <span>Bottled.</span>
+                                        <span>Bottled.</span>
+                                    </span>
+                                </span>
+                            </div>
+                        </h1>
+                        
+                        <!-- NEW Scroll hint -->
+                        <div class="hero-scroll-indicator">
+                            <div class="hero-mouse">
+                                <div class="hero-mouse-dot"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="hero-badge-wrapper">
+                        <!-- badge -->
+                        <div class="hero-badge" id="hero-badge">
+                            <span class="hero-badge-dot"></span>
+                            Alphonso Gold · Ratnagiri, India
+                        </div>
+                        <!-- Right-side Info Card (Hidden on Mobile) -->
+                        <div class="hero-info-card">
+                            <div class="info-card-item">
+                                <span class="info-label">Harvest</span>
+                                <span class="info-value">Summer 2026</span>
+                            </div>
+                            <div class="info-card-divider"></div>
+                            <div class="info-card-item">
+                                <span class="info-label">Origin</span>
+                                <span class="info-value">Ratnagiri, India</span>
+                            </div>
+                            <div class="info-card-divider"></div>
+                            <div class="info-card-item">
+                                <span class="info-label">Process</span>
+                                <span class="info-value">Cold-Pressed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Brand Signature Logo -->
+                    <div class="hero-corner-logo">MANŌ JUICE</div>
+                </div>
+                <canvas id="hero-canvas"></canvas>
+            </div>
+        </section>
+
+        <!-- TAGLINE -->
+        <section class="quote-section" id="quote">
+            <div class="quote-inner">
+                <span class="quote-label reveal-item">— The MANŌ Promise</span>
+                <h2 class="quote-text reveal item">its taste is<br><em>for the best</em></h2>
+                <p class="quote-body reveal item">Not a compromise. Not a concentrate. Just pure, unapologetic mango — the
+                    way nature intended it.</p>
+                <a href="#purchase" class="btn-primary reveal-item">Taste the Difference</a>
+            </div>
+        </section>
+    </div>
+    
+    <!-- 600vh SPACER: 500vh canvas/text scrub + 100vh hold time before next section slides over -->
+    <div style="height: 600vh; width: 100%; pointer-events: none;"></div>
+
+    <!-- FEATURES -->
+    <section class="features-section stack-section" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-item">Why MANŌ</span>
+                <h2 class="section-title reveal-item">Crafted with <em>obsession</em></h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 4C24 4 10 14 10 26a14 14 0 0 0 28 0C38 14 24 4 24 4z" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M24 28v-12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3>Cold-Pressed</h3>
+                    <p>Zero heat. Zero compromise. Every bottle is cold-pressed within hours of harvest to lock in
+                        nutrients and natural flavour.</p>
+                </div>
+                <div class="feature-card reveal-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2" />
+                            <path d="M16 24l6 6 10-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>100% Natural</h3>
+                    <p>No added sugar. No preservatives. No artificial flavours. Just mangoes — hand-selected from the
+                        finest orchards on earth.</p>
+                </div>
+                <div class="feature-card reveal-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 40L24 8l16 32H8z" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M24 28v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="24" cy="33" r="1.5" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <h3>Single Origin</h3>
+                    <p>Sourced from our exclusive partner farms in Alphonso country, India — where the world's most
+                        prized mangoes grow wild under the sun.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE -->
+    <section class="product-section stack-section" id="product">
+        <div class="container product-inner">
+            <div class="product-visual reveal-item">
+                <div class="product-glow"></div>
+                <div class="product-bottle-wrap">
+                    <div class="bottle-mockup">
+                        <div class="bottle-body">
+                            <div class="bottle-label">
+                                <span class="label-brand">MANŌ</span>
+                                <span class="label-type">Pure Mango</span>
+                                <span class="label-vol">350 ml</span>
+                            </div>
+                        </div>
+                        <div class="bottle-cap"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-info">
+                <span class="section-eyebrow reveal-item">The Signature Bottle</span>
+                <h2 class="section-title reveal-item">One bottle.<br><em>One obsession.</em></h2>
+                <p class="product-desc reveal-item">Each 350ml MANŌ bottle contains the juice of 4–5 perfectly ripened
+                    Alphonso mangoes. Dark amber glass preserves every antioxidant. Every sip is an event.</p>
+                <ul class="product-specs reveal-item">
+                    <li><span class="spec-key">Size</span><span class="spec-val">350 ml</span></li>
+                    <li><span class="spec-key">Calories</span><span class="spec-val">120 kcal</span></li>
+                    <li><span class="spec-key">Vitamin C</span><span class="spec-val">100% RDA</span></li>
+                    <li><span class="spec-key">Origin</span><span class="spec-val">Ratnagiri, India</span></li>
+                    <li><span class="spec-key">Added Sugar</span><span class="spec-val">None — ever</span></li>
+                </ul>
+                <a href="#purchase" class="btn-primary reveal-item">Add to Cart — $8.99</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INGREDIENTS -->
+    <section class="ingredients-section stack-section" id="ingredients">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-item">What's Inside</span>
+                <h2 class="section-title reveal-item">Nothing to hide.<br><em>Everything to love.</em></h2>
+            </div>
+            <div class="ingredients-grid">
+                <div class="ingredient-item reveal-item">
+                    <div class="ingredient-num">01</div>
+                    <h4>Alphonso Mangoes</h4>
+                    <p>The undisputed king of mangoes. Rich, creamy, and intensely sweet — grown only in the coastal
+                        belts of Maharashtra.</p>
+                </div>
+                <div class="ingredient-item reveal-item">
+                    <div class="ingredient-num">02</div>
+                    <h4>Himalayan Spring Water</h4>
+                    <p>A touch of pristine mineral-balanced water for perfect consistency — nothing else.</p>
+                </div>
+                <div class="ingredient-item reveal-item">
+                    <div class="ingredient-num">03</div>
+                    <h4>A Squeeze of Lime</h4>
+                    <p>Just enough brightness to make every sip vibrate with life. No aftertaste. Pure balance.</p>
+                </div>
+            </div>
+            <p class="ingredients-footnote reveal-item">That's it. Three ingredients. That's the entire list.</p>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section stack-section" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow reveal-item">What People Say</span>
+                <h2 class="section-title reveal-item">They tasted it.<br><em>They loved it.</em></h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card reveal-item">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-body">"I've travelled through Southeast Asia and India sampling fresh mangoes. MANŌ
+                        is the first bottled juice I've tasted that actually captures that real mango experience."</p>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#ff7518,#ffb300);">S</div>
+                        <div>
+                            <strong>Sofia M.</strong>
+                            <span>Verified Buyer · Dubai</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card reveal-item">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-body">"Every morning I open a MANŌ bottle and it genuinely feels like a luxury
+                        ritual. The taste is unreal — sweet, complex, and so refreshing. Worth every penny."</p>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899);">J</div>
+                        <div>
+                            <strong>James T.</strong>
+                            <span>Verified Buyer · London</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card reveal-item">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-body">"I gifted a case to my parents and they called me the next day asking where
+                        to order more. It's that good. Pure, honest, and absolutely delicious."</p>
+                    <div class="review-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#06b6d4,#3b82f6);">A</div>
+                        <div>
+                            <strong>Aisha K.</strong>
+                            <span>Verified Buyer · New York</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PURCHASE / CTA -->
+    <section class="purchase-section stack-section" id="purchase">
+        <div class="purchase-glow-1"></div>
+        <div class="purchase-glow-2"></div>
+        <div class="container purchase-inner">
+            <span class="section-eyebrow reveal-item" style="color:var(--clr-yellow);">Limited Stock. Order
+                Today.</span>
+            <h2 class="purchase-title reveal-item">Ready to taste<em>the best ?</em></h2>
+            <p class="purchase-sub reveal-item">Free shipping on orders over $50. Delivered chilled to your door within
+                48 hours.</p>
+            <div class="purchase-cards reveal-item">
+                <div class="pur-card">
+                    <span class="pur-badge">Try It</span>
+                    <h3>Single Bottle</h3>
+                    <div class="pur-price">$8.99<span>/bottle</span></div>
+                    <ul class="pur-perks">
+                        <li>350ml glass bottle</li>
+                        <li>Premium cold-pressed</li>
+                        <li>Standard shipping</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Order Now</a>
+                </div>
+                <div class="pur-card pur-card--featured">
+                    <span class="pur-badge">Best Value</span>
+                    <h3>Case of 12</h3>
+                    <div class="pur-price">$79.99<span>/case</span></div>
+                    <ul class="pur-perks">
+                        <li>12 × 350ml bottles</li>
+                        <li>Save over 25%</li>
+                        <li>Free priority shipping</li>
+                        <li>Insulated delivery box</li>
+                    </ul>
+                    <a href="#" class="btn-primary">Order Now</a>
+                </div>
+                <div class="pur-card">
+                    <span class="pur-badge">Subscribe</span>
+                    <h3>Monthly Club</h3>
+                    <div class="pur-price">$59.99<span>/mo</span></div>
+                    <ul class="pur-perks">
+                        <li>12 bottles / month</li>
+                        <li>Save 33% always</li>
+                        <li>Free priority shipping</li>
+                        <li>Early access to new flavours</li>
+                    </ul>
+                    <a href="#" class="btn-outline">Subscribe &amp; Save</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class = "space"></div>
+            <div class="footer_logo-rapper">
+                <div class="footer_logo-inner"><span class="footer-logo-letter">M</span></div>
+                <div class="footer_logo-inner"><span class="footer-logo-letter">A</span></div>
+                <div class="footer_logo-inner"><span class="footer-logo-letter">N</span></div>
+                <div class="footer_logo-inner"><span class="footer-logo-letter">Ō</span></div>
+            </div>
+
+            <div class="container footer-bottom">
+                <div class="footer-bottom__copyright">
+                    <span>© 2026 MANŌ. All rights reserved.</span>
+                </div>
+                <div class="footer-bottom__socials">
+                    <span>Made with love for mango lovers.</span>
+                </div>
+            </div>
+        </div> <!-- End of footer-grid -->
+
+        <div class="footer-connection">
+            <div class="footer-connection-glow"></div>
+            <div class="footer-connection-content">
+                <h2 class="connection-title reveal-item">The journey <em>restarts</em></h2>
+                <div class="connection-scroll-indicator reveal-item">
+                    <span>Keep Scrolling</span>
+                    <svg width="20" height="23" viewBox="0 0 20 23" fill="none">
+                        <path d="M10 0L10 21" stroke="currentColor" stroke-opacity="0.8" stroke-width="1.5"></path>
+                        <path d="M1 12.5L10 21.5L19 12.5" stroke="currentColor" stroke-opacity="0.8" stroke-width="1.5"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TELEPORT OVERLAY FOR SEAMLESS JUMP -->
+    <div id="teleport-overlay"></div>
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+    <script src="script2.js"></script>
+</body>
+
+</html>
